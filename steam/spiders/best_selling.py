@@ -66,21 +66,6 @@ class BestSellingSpider(scrapy.Spider):
                 """(.//div[contains(@class, 
                 'search_price discounted')]/text())[2]"""
             )
-            # # Steam items results
-            # steam_item['game_url'] = game_url.get()
-            # steam_item['img_url'] = img_url.get()
-            # steam_item['game_name'] = game_name.get()
-            # steam_item['release_date'] = release_date.get()
-            # steam_item['platforms'] = self.get_platforms(platforms.getall())
-            # steam_item['reviews'] = remove_tags(
-            #     reviews.get() if reviews.get() != None else 'No reviews'
-            # )
-            # steam_item['discount_rate'] = discount_rate.get().lstrip('-')  \
-            #                               if discount_rate.get() != None else ''
-            # steam_item['original_price'] = self.get_original_price(original_price)
-            # steam_item['discounted_price'] = discounted_price.get().strip()\
-            #                                  if discounted_price.get() != None\
-            #                                  else 'No discounted price'
             yield loader.load_item()
         next_page = response.xpath(
             "//a[@class='pagebtn' and contains(text(), '>')]/@href"
